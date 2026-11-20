@@ -74,15 +74,16 @@
     "check": "node --check lib/index.js",
     "engine:help": "python -m tushare_engine.cli --help"
   },
-  "dependencies": {
-    "@deepseek-ai/dsh-tools": "0.2.2-rc.1",
-    "@deepseek-ai/schemastery": "~3.19.0"
-  },
+  "dependencies": {},
   "peerDependencies": {
-    "@deepseek-ai/cordis": "~4.1.0"
+    "@deepseek-ai/cordis": "~4.1.0",
+    "@deepseek-ai/dsh-tools": ">=0.2.2-rc.1 <0.3.0",
+    "@deepseek-ai/schemastery": "~3.19.0"
   },
   "devDependencies": {
     "@deepseek-ai/cordis": "~4.1.0",
+    "@deepseek-ai/dsh-tools": "0.2.2-rc.1",
+    "@deepseek-ai/schemastery": "~3.19.0",
     "@types/node": "^22.10.0",
     "typescript": "^5.7.2"
   }

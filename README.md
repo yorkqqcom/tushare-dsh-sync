@@ -16,7 +16,7 @@ DeepSeek Harness 插件：Tushare **日更下载管理**（SQLite / PostgreSQL�
 - 定时：插件自有 CronDriver（默认 `30 18 * * 1-5`，`Asia/Shanghai`）；与手动同步共用勾选与权限闸
 - coming_soon 接口可用 CLI `scaffold-adapter` 生成 stub（不进日更热路径）
 
-## 安装
+## 如何安装
 
 ### 依赖
 
@@ -24,35 +24,44 @@ DeepSeek Harness 插件：Tushare **日更下载管理**（SQLite / PostgreSQL�
 - DeepSeek Harness ≥ 0.2.2-rc.1
 - Python ≥ 3.10
 
-### 从 GitHub Release 安装（推荐）
+### 从 npm 安装（推荐）
 
-预构建 `.tgz` 发布在 [Releases](https://github.com/yorkqqcom/tushare-dsh-sync/releases)：
+包已发布：[dsh-tushare-sync](https://www.npmjs.com/package/dsh-tushare-sync)
 
-```bash
-# 直链安装（pnpm / dsh plugin 支持 .tgz URL）
-dsh plugin --profile web add https://github.com/yorkqqcom/tushare-dsh-sync/releases/download/v0.1.0/dsh-tushare-sync-0.1.0.tgz
+在 DeepSeek Harness「添加插件」输入框填：
+
+```text
+dsh-tushare-sync
 ```
 
-或先下载资产再本地安装：
+或命令行：
 
 ```bash
-dsh plugin --profile web add ./dsh-tushare-sync-0.1.0.tgz
+dsh plugin --profile web add dsh-tushare-sync
 ```
 
-安装后 **必须** 安装 Python engine 依赖（包内仅含源码，不含 wheel）：
+安装后 **必须** 安装 Python engine 依赖（包内仅含 `engine` 源码，不含 wheel）：
 
 ```bash
 # 插件装入 profile 后，在其包目录下执行，例如：
 #   ~/.dsh/profiles/web/node_modules/dsh-tushare-sync/engine
+# Windows 常见：
+#   %USERPROFILE%\.dsh\profiles\web\node_modules\dsh-tushare-sync\engine
 cd <plugin-install-dir>/engine
 python -m pip install -r requirements.txt
 ```
 
 重启 `dsh web`，打开 Web UI 左侧 **「Tushare 同步」**。
 
-若直链被环境拦截，改用「下载后本地路径 add」。
+### 备选：GitHub Release `.tgz`
 
-### 开发者：本地路径安装
+预构建包也在 [Releases](https://github.com/yorkqqcom/tushare-dsh-sync/releases)：
+
+```bash
+dsh plugin --profile web add https://github.com/yorkqqcom/tushare-dsh-sync/releases/download/v0.1.0/dsh-tushare-sync-0.1.0.tgz
+```
+
+### 附录：开发者本地路径安装
 
 ```bash
 # 在本仓库根目录
@@ -69,14 +78,13 @@ dsh plugin --profile <your-profile> add /absolute/path/to/tushare-dsh-sync
 pnpm dsh web --patch ./profiles/demo/cordis.patch.yml
 ```
 
-### 打安装包（维护者）
+### 附录：打安装包（维护者）
 
 ```bash
 npm run pack:release   # 产出 dsh-tushare-sync-<version>.tgz
 ```
 
 推送 tag `vX.Y.Z`（须与 `package.json` 的 `version` 一致）后，GitHub Actions 会自动创建 Release 并上传该 `.tgz`。
-
 ## 验收（SQLite）
 
 1. 侧栏打开「Tushare 同步」→ Onboarding 填入 Token，选择 SQLite → 测活 → 保存并探测权限
