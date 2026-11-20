@@ -1,0 +1,7 @@
+{
+  "name": "@tushare-dsh/sync-local",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Provider 占位：实现见根包 src/service.ts / runner.ts / cron.ts",
+  "type": "module"
+}

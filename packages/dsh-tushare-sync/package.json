@@ -1,0 +1,7 @@
+{
+  "name": "@tushare-dsh/sync-types",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Service Definition / 类型真源（由根包 src/types.ts 实现；本目录为 monorepo 占位）",
+  "type": "module"
+}

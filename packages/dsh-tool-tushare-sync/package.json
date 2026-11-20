@@ -1,0 +1,7 @@
+{
+  "name": "@tushare-dsh/tool-sync",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Tools 占位：实现见根包 src/tools/register.ts",
+  "type": "module"
+}

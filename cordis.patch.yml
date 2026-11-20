@@ -1,0 +1,13 @@
+# dsh-tushare-sync bundle patch
+- insert:
+    - id: dsh-tushare-sync
+      name: 'dsh-tushare-sync'
+      config:
+        metaDir: ''
+        enginePython: python
+        engineRoot: ''
+        apiMinIntervalSec: 0.35
+        defaultAdjType: hfq
+        cronEnabled: false
+        cronExpression: '30 18 * * 1-5'
+        cronTimeZone: Asia/Shanghai

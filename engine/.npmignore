@@ -1,0 +1,7 @@
+__pycache__
+*.pyc
+*.pyo
+.venv/
+venv/
+tushare_engine/pipeline/scaffold_stubs/*
+!tushare_engine/pipeline/scaffold_stubs/__init__.py

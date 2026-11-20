@@ -1,0 +1,54 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build and pack
+        run: npm run pack:release
+
+      - name: Resolve asset name
+        id: asset
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          TGZ="dsh-tushare-sync-${VERSION}.tgz"
+          if [ ! -f "$TGZ" ]; then
+            echo "Expected $TGZ not found; got:" >&2
+            ls -la *.tgz >&2 || true
+            exit 1
+          fi
+          PKG_VERSION=$(node -p "require('./package.json').version")
+          if [ "$PKG_VERSION" != "$VERSION" ]; then
+            echo "Tag v$VERSION does not match package.json version $PKG_VERSION" >&2
+            exit 1
+          fi
+          echo "tgz=$TGZ" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ steps.asset.outputs.tgz }}
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

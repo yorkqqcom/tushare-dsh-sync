@@ -1,0 +1,7 @@
+{
+  "name": "@tushare-dsh/api-sync",
+  "version": "0.1.0",
+  "private": true,
+  "description": "UI API 占位：首期为 loopback HTTP /tushare-sync/api（src/http-api.ts）；后续可换 Typert Remote",
+  "type": "module"
+}

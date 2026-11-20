@@ -1,0 +1,5 @@
+# Nested junk under package.json "files" whitelist
+__pycache__
+*.pyc
+*.pyo
+*.tgz

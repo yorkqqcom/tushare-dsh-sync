@@ -1,0 +1,13 @@
+# 本地联调：将绝对路径替换为本机 checkout
+- insert:
+    - id: dsh-tushare-sync
+      name: 'D:/PycharmProjects/tushare-dsh-sync/lib/index.js'
+      config:
+        metaDir: ''
+        enginePython: python
+        engineRoot: 'D:/PycharmProjects/tushare-dsh-sync/engine'
+        apiMinIntervalSec: 0.35
+        defaultAdjType: hfq
+        cronEnabled: false
+        cronExpression: '30 18 * * 1-5'
+        cronTimeZone: Asia/Shanghai

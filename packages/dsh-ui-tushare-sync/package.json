@@ -1,0 +1,7 @@
+{
+  "name": "@tushare-dsh/ui-sync",
+  "version": "0.1.0",
+  "private": true,
+  "description": "UI 占位：实现见根包 client/index.js（挂在 dsh-tushare-sync 的 dsh.client 上）",
+  "type": "module"
+}
